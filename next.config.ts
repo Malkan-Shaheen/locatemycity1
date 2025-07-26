@@ -1,15 +1,3 @@
-module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'http://localhost:3001/api/:path*' // Proxy to Express
-      },
-      
-      
-    ];
-  }
-};
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -18,6 +6,14 @@ const nextConfig = {
   images: {
     domains: ['cdnjs.cloudflare.com', 'unpkg.com'],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:3001/api/:path*'
+      }
+    ];
+  }
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;
